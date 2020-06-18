@@ -93,9 +93,9 @@ const logout = async (req, res) => {
   try {
     const user = await User.findOneAndUpdate(
       { _id: req.user._id },
-      { token: "", tokenExp: "" }
+      { token: ""}
     );
-
+console.log(user)
     return res.status(200).send({
       success: true,
     });
