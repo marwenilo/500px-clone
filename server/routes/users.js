@@ -16,7 +16,7 @@ router
    * @api /login
    * @description get user after auth
    */
-.get("/login", getUser)
+.get("/login",auth, getUser)
   /**
    * @method POST
    * @api /login

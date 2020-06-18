@@ -1,8 +1,8 @@
 const { User } = require("../models/User");
-
+const jwt = require("jsonwebtoken");
 const auth = (req, res, next) => {
-  const token = req.header("x-auth-token");
-
+  let token = req.header("x-auth-token");
+console.log(token)
   //Check if not token
   if (!token) {
     return res.status(403).json({ msg: "No token, authoriwation denied" });
@@ -10,7 +10,7 @@ const auth = (req, res, next) => {
 
   //Verify token
   try {
-    const decoded = jwt.verify(token, config.get("jwtSecret"));
+    const decoded = jwt.verify(token, "jwtSecret");
 
     req.user = decoded.user;
     next();
