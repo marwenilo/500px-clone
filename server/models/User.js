@@ -1,8 +1,10 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
-const saltRounds = 10;
 const jwt = require("jsonwebtoken");
 
+const saltRounds = 10;
+MAX_LOGIN_ATTEMPTS = 5,
+LOCK_TIME = 2 * 60 * 60 * 1000;
 const UserSchema = mongoose.Schema({
   name: {
     type: String,
@@ -100,6 +102,12 @@ UserSchema.methods.incLoginAttempts = function(cb) {
     };
 
 
+// expose enum on the model, and provide an internal convenience reference 
+var reasons = UserSchema.statics.failedLogin = {
+  NOT_FOUND: 0,
+  PASSWORD_INCORRECT: 1,
+  MAX_ATTEMPTS: 2
+};
 
 
 UserSchema.methods.generateToken = function (cb) {
@@ -131,10 +139,7 @@ UserSchema.statics.failedLogin = {
 };
 
 // password is incorrect, so increment login attempts before responding
-user.incLoginAttempts(function (err) {
-  if (err) return cb(err);
-  return cb(null, null, reasons.PASSWORD_INCORRECT);
-});
-const User = mongoose.model("User", userSchema);
+
+const User = mongoose.model("User", UserSchema);
 
 module.exports = { User };
