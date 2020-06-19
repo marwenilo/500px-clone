@@ -22,7 +22,7 @@ export default function (state = iniState, action) {
     case REGISTER_SUCCESS:
       return {
         ...state,
-        isReg: false,
+        isReg: true,
       };
     case LOGIN_SUCCESS:
       localStorage.setItem("token", payload.token);
@@ -30,6 +30,11 @@ export default function (state = iniState, action) {
         ...state,
         isAth: true,
       };
+    case USER_LOADED:
+        return{
+            ...state,
+            user:payload
+        }
     case LOGOUT:
       localStorage.removeItem("token");
       return {
