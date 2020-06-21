@@ -7,8 +7,8 @@ import PricingSection from "./PricingSection";
 function Home(props) {
   const { selectHome } = props;
   useEffect(() => {
-    selectHome();
-  }, [selectHome]);
+   
+  }, []);
   return (
     <Fragment>
       <HeadSection />

@@ -1,20 +1,17 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import Typography from '@material-ui/core/Typography';
+
 import {
-  Grid,
-  Typography,
-  Card,
-  Button,
-  Hidden,
-  Box,
+  
   withStyles,
   withWidth,
-  isWidthUp
+
 } from "@material-ui/core";
   
 import WaveBorder from "../../../assets/WaveBorder";
-
+import imh from "../../../assets/images/5.jpg"
 const styles = theme => ({
   extraLargeButtonLabel: {
     fontSize: theme.typography.body1.fontSize,
@@ -66,8 +63,11 @@ const styles = theme => ({
   },
   wrapper: {
     position: "relative",
-    backgroundColor: theme.palette.secondary.main,
-    paddingBottom: theme.spacing(2)
+height:"70vh",
+    backgroundImage:`url(${imh})`,
+    backgroundSize: "101%",
+    backgroundPosition: "center -x`359px",
+    backgroundRepeat: "no-repeat",
   },
   image: {
     maxWidth: "100%",
@@ -94,79 +94,29 @@ const styles = theme => ({
     }
   },
   waveBorder: {
-    paddingTop: theme.spacing(4)
+    position: "absolute",
+    bottom: "0",
+    width:"100%",
   }
 });
 
 function HeadSection(props) {
-  const { classes, theme, width } = props;
+  const { classes, theme } = props;
   return (
     <Fragment>
       <div className={classNames("lg-p-top", classes.wrapper)}>
-        <div className={classNames("container-fluid", classes.container)}>
-          <Box display="flex" justifyContent="center" className="row">
-            <Card
-              className={classes.card}
-              data-aos-delay="200"
-              data-aos="zoom-in"
-            >
-              <div className={classNames(classes.containerFix, "container")}>
-                <Box justifyContent="space-between" className="row">
-                  <Grid item xs={12} md={5}>
-                    <Box
-                      display="flex"
-                      flexDirection="column"
-                      justifyContent="space-between"
-                      height="100%"
-                    >
-                      <Box mb={4}>
-                        <Typography
-                          variant={isWidthUp("lg", width) ? "h3" : "h4"}
-                        >
-                          Free Template for building an SaaS app using
-                          Material-UI
-                        </Typography>
-                      </Box>
-                      <div>
-                        <Box mb={2}>
-                          <Typography
-                            variant={isWidthUp("lg", width) ? "h6" : "body1"}
-                            color="textSecondary"
-                          >
-                            Lorem ipsum dolor sit amet, consetetur sadipscing
-                            elitr, sed diam nonumy eirmod tempor invidunt
-                          </Typography>
-                        </Box>
-                        <Button
-                          variant="contained"
-                          color="secondary"
-                          fullWidth
-                          className={classes.extraLargeButton}
-                          classes={{ label: classes.extraLargeButtonLabel }}
-                          href="https://github.com/dunky11/react-saas-template"
-                        >
-                          Download from GitHub
-                        </Button>
-                      </div>
-                    </Box>
-                  </Grid>
-                  <Hidden smDown>
-                    <Grid item md={6}>
-                   
-                    </Grid>
-                  </Hidden>
-                </Box>
-              </div>
-            </Card>
-          </Box>
-        </div>
-      </div>
+      <Typography variant="h1" component="h2">
+      Discover and share the world’s best photos
+</Typography>
+
+     <p><span>Get inspired with incredible photos from diverse styles and genres around the world. We're not guided by fads—just great photography.</span></p>
       <WaveBorder
-        upperColor={theme.palette.secondary.main}
+
         lowerColor="#FFFFFF"
         className={classes.waveBorder}
         animationNegativeDelay={2}
       />
+       </div>
     </Fragment>
   );
 }
