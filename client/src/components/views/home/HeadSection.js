@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import Typography from '@material-ui/core/Typography';
-
+import Button from '@material-ui/core/Button';
 import {
   
   withStyles,
@@ -11,7 +11,7 @@ import {
 } from "@material-ui/core";
   
 import WaveBorder from "../../../assets/WaveBorder";
-import imh from "../../../assets/images/5.jpg"
+import imh from "../../../assets/images/7.jpg"
 const styles = theme => ({
   extraLargeButtonLabel: {
     fontSize: theme.typography.body1.fontSize,
@@ -66,8 +66,9 @@ const styles = theme => ({
 height:"70vh",
     backgroundImage:`url(${imh})`,
     backgroundSize: "101%",
-    backgroundPosition: "center -x`359px",
+    backgroundPosition: "center -359px",
     backgroundRepeat: "no-repeat",
+ 
   },
   image: {
     maxWidth: "100%",
@@ -97,6 +98,52 @@ height:"70vh",
     position: "absolute",
     bottom: "0",
     width:"100%",
+  },
+  headBtnSign:{
+    display: "inline-flex",
+    justifyContent: "center",
+    alignItems: "center",
+    fontWeight: "bold",
+    width: "10%",
+    height: "60px",
+    minWidth: "216px",
+    lineHeight: "56px",
+    fontSize: "21px",
+    backgroundColor: "rgb(255, 255, 255)",
+    color: "rgb(34, 34, 34)",
+    padding: "0px 16px",
+    borderRadius: "100px",
+    margin: "16px 0px 0px",
+    borderWidth: "initial",
+    borderStyle: "none",
+    borderColor: "initial",
+    borderImage: "initial",
+    transition: "background-color 0.1s ease 0s",
+    textDecoration: "none",
+  },
+  headerInfo:{
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    justifyContent: "center",
+    padding: "100px 150px",
+    maxWidth: "600px",
+    textAlign: "initial",
+    color: "white",
+ 
+  },
+  hDiscover:{
+    fontSize: "48px",
+    lineHeight: "52px",
+    letterSpacing:" -0.4px",
+    margin:"0"
+  },
+  pDiscover:{
+    fontSize: "19px",
+    lineHeight: "20px",
+    letterSpacing: "0px",
+    textTransform: "none",
+    
   }
 });
 
@@ -105,11 +152,20 @@ function HeadSection(props) {
   return (
     <Fragment>
       <div className={classNames("lg-p-top", classes.wrapper)}>
-      <Typography variant="h1" component="h2">
-      Discover and share the world’s best photos
-</Typography>
+      <div className={classes.headerInfo}>
 
-     <p><span>Get inspired with incredible photos from diverse styles and genres around the world. We're not guided by fads—just great photography.</span></p>
+      
+     <h1 className={classes.hDiscover}>
+     <span>
+      Discover and share the world’s best photos
+      </span>
+</h1>
+
+     <p className={classes.pDiscover}><span>Get inspired with incredible photos from diverse styles and genres around the world. We're not guided by fads—just great photography.</span></p>
+     <a variant="outlined" size="large" color="primary" href="login" className={classes.headBtnSign} >
+         Sign up
+        </a>
+     </div>
       <WaveBorder
 
         lowerColor="#FFFFFF"
