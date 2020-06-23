@@ -36,7 +36,7 @@ const styles = (theme) => ({
   }
 });
 function InfoCard(props) {
-  const { classes, theme } = props;
+  const { classes } = props;
   return (
     <div className={classes.cardsSection}>
     <h2 className={classes.hCard}><span>
@@ -47,7 +47,7 @@ function InfoCard(props) {
       {infoCard &&
         infoCard.map((card, key) => (
           <div className={classes.cardContainer}>
-            <i class={card.icon}></i>
+            <i className={card.icon}></i>
             <h3>
               <span>{card.title}</span>
             </h3>

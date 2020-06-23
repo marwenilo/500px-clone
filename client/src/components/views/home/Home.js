@@ -2,17 +2,14 @@ import React, { Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import HeadSection from "./HeadSection";
 import InfoCard from "./InfoCard";
-
+import GetApp from "./GetApp"
 function Home(props) {
-  const { selectHome } = props;
-  useEffect(() => {
-   
-  }, []);
+
   return (
     <Fragment>
       <HeadSection />
       <InfoCard />
-      
+      <GetApp />
     </Fragment>
   );
 }

@@ -1,8 +1,7 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+
 import {
   
   withStyles,
