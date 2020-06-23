@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import HeadSection from "./HeadSection";
 import InfoCard from "./InfoCard";
 import GetApp from "./GetApp"
+import EditorChoice from "./EditorChoice";
 function Home(props) {
 
   return (
@@ -10,6 +11,7 @@ function Home(props) {
       <HeadSection />
       <InfoCard />
       <GetApp />
+      <EditorChoice/>
     </Fragment>
   );
 }
