@@ -5,7 +5,7 @@ import imh from "../../../assets/images/1.jpg";
 
 const styles = (theme) => ({
   editorContainer: {
-    height:"600px",
+    height:"500px",
     wordBreak: "break-word",
     maxWidth: "100%",
     justifyContent: "center",
@@ -17,6 +17,7 @@ const styles = (theme) => ({
     backgroundSize: "cover",
     backgroundImage: `url(${imh})`,
     backgroundRepeat: "no-repeat",
+
   },
   dote:{
     height: "200px",
