@@ -18,11 +18,14 @@ const styles = (theme) => ({
     flexDirection: "column",
     alignItems: "start",
     textAlign: "start",
+    paddingLeft:"100px",
+    width:"62%"
   },
   appLeftPart: {},
   getAppImg: {
     height: "340px",
     width: "340px",
+   
   },
   hGetApp: {
     fontSize: "50px",
