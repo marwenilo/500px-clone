@@ -5,6 +5,8 @@ import InfoCard from "./InfoCard";
 import GetApp from "./GetApp"
 import EditorChoice from "./EditorChoice";
 import Quests from "./Quests";
+import Licensing from "./Licensing";
+
 function Home(props) {
 
   return (
@@ -14,6 +16,7 @@ function Home(props) {
       <GetApp />
       <EditorChoice/>
       <Quests/>
+      <Licensing/>
     </Fragment>
   );
 }
