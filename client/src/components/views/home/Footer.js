@@ -16,6 +16,7 @@ const styles = (theme) => ({
     color: "rgb(109, 115, 120)",
     margin: "0px 0px 16px",
     listStyleType: "none",
+    textDecoration: "none",
   },
   liFooter: {
     fontSize: "17px",
@@ -56,11 +57,22 @@ const styles = (theme) => ({
   footerParts:{
     display: "flex",
     margin: "0 30px",
-  }
+  },
+  foodterBorder:{
+      border:"1px solid rgb(109, 115, 120)",
+      margin:"20px 60px"
+  },
+  footerBottomPart:{
+    display: "flex",
+    justifyContent: "space-between",
+    margin:"0 60px",
+}
+  
 });
 function Footer(props) {
   const { classes } = props;
   return (
+      <>
     <div className={classes.FooterContainer}>
     <div className={classes.footerParts}>
       {footerLists &&
@@ -421,7 +433,20 @@ function Footer(props) {
         </div>
       </div>
       </div>
+      
     </div>
+    <div className={classes.foodterBorder}></div>
+    <div className={classes.footerBottomPart}>
+        <h4 className={classes.liTitleFooter}><span>
+        © 500px
+        </span></h4>
+        <div className={classes.footerBootomList}>
+        <a href="#" className={classes.liTitleFooter} ><span>Terms</span></a>
+        <a href="#" className={classes.liTitleFooter}  ><span>Privacy</span></a>
+        <a href="#" className={classes.liTitleFooter} > <span>Support</span></a>
+        </div>
+    </div>
+    </>
   );
 }
 export default withStyles(styles, { withTheme: true })(Footer);
