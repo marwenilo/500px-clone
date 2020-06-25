@@ -6,7 +6,7 @@ import GetApp from "./GetApp"
 import EditorChoice from "./EditorChoice";
 import Quests from "./Quests";
 import Licensing from "./Licensing";
-
+import Community from "./Community";
 function Home(props) {
 
   return (
@@ -17,6 +17,7 @@ function Home(props) {
       <EditorChoice/>
       <Quests/>
       <Licensing/>
+      <Community/>
     </Fragment>
   );
 }

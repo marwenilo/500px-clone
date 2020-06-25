@@ -75,7 +75,7 @@ const styles = (theme) => ({
   },
   pLicensing: {
     fontSize: "17px",
-    lineHeight: "21px",
+    lineHeight: "20px",
     letterSpacing: "0px",
     textTransform: "none",
     color: "rgb(34, 34, 34)",
