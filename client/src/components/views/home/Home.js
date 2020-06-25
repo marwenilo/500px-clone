@@ -7,6 +7,7 @@ import EditorChoice from "./EditorChoice";
 import Quests from "./Quests";
 import Licensing from "./Licensing";
 import Community from "./Community";
+import Footer from "./Footer";
 function Home(props) {
 
   return (
@@ -18,6 +19,7 @@ function Home(props) {
       <Quests/>
       <Licensing/>
       <Community/>
+      <Footer/>
     </Fragment>
   );
 }
