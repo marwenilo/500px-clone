@@ -1,10 +1,10 @@
 import React from "react";
 import { withStyles } from "@material-ui/core";
-import imh from "../../../assets/images/1.jpg";
-
+import imh from "../../../assets/images/rr.jpg";
+import imhs from "../../../assets/images/quests_collage.png";
 const styles = (theme) => ({
-  editorContainer: {},
-  editorHeaderContainer: {
+  QuestesContainer: {},
+  QuestesHeaderContainer: {
     height: "500px",
     wordBreak: "break-word",
     maxWidth: "100%",
@@ -18,25 +18,33 @@ const styles = (theme) => ({
     backgroundImage: `url(${imh})`,
     backgroundRepeat: "no-repeat",
   },
-  doteEditor: {
+  doteQuests: {
     height: "150px",
     width: "150px",
-    backgroundColor: "rgb(12, 239, 232)",
+    backgroundColor: "#e44059",
     borderRadius: "50%",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
     margin: "70px 0",
   },
-  hEditor: {
-    fontSize: "80px",
-    lineHeight: "40px",
+  hQuestes: {
+    fontSize: "45px",
+    lineHeight: "52px",
     fontWeight: "bold",
     textTransform: "none",
-    color: "rgb(255, 255, 255)",
+    color: "black",
     margin: "0px",
   },
-  EditorBtn: {
+  h2Questes: {
+    fontSize: "52px",
+    lineHeight: "52px",
+    fontWeight: "bold",
+    textTransform: "none",
+    color: "black",
+    margin: "0px",
+  },
+  QuestesBtn: {
     display: "inline-flex",
     justifyContent: "center",
     alignItems: "center",
@@ -45,7 +53,7 @@ const styles = (theme) => ({
     height: "80px",
     minWidth: "216px",
     lineHeight: "56px",
-    fontSize: "26px",
+    fontSize: "30px",
     backgroundColor: "rgb(255, 255, 255)",
     color: "white",
     backgroundColor: "black",
@@ -59,40 +67,59 @@ const styles = (theme) => ({
     transition: "background-color 0.1s ease 0s",
     textDecoration: "none",
   },
-  editorBottomContainer: {
+  QuestesBottomContainer: {
     padding: "32px 64px",
     display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    height: "228px",
+  
+   
   },
-  pEditor: {
-    fontSize: "20px",
+  pQuestes: {
+    fontSize: "18px",
     lineHeight: "20px",
     letterSpacing: "0px",
     textTransform: "none",
     color: "rgb(34, 34, 34)",
   },
+  QuestsBottomRight:{
+    alignItems: "start",
+    justifyContent: "flex-end",
+    display: "flex",
+    textAlign: "start",
+   
+    flexDirection: "column",
+    padding: "35px",
+  },
+  QuestsImg:{
+    maxWidth: "630px",
+   padding:"20px"
+  }
 });
-function EditorChoise(props) {
+function Quests(props) {
   const { classes } = props;
 
   return (
-    <div className={classes.editorContainer}>
-      <div className={classes.editorHeaderContainer}>
-        <span className={classes.doteEditor}>
-          <i class="fas fa-award fa-6x"></i>
+    <div className={classes.QuestesContainer}>
+      <div className={classes.QuestesHeaderContainer}>
+        <span className={classes.doteQuests}>
+        <i class="fas fa-rocket fa-5x"></i>
         </span>
-        <h2 className={classes.hEditor}>
+        <h2 className={classes.h2Questes}>
           {" "}
-          <span>Editors’ Choice</span>
+          <span>Quests</span>
         </h2>
       </div>
-      <div className={classes.editorBottomContainer}>
-        <p className={classes.pEditor}>
+
+
+
+      <div className={classes.QuestesBottomContainer}>
+      <div className={classes.QuestsBottomRight}>
+      <i class="fas fa-trophy fa-7x"></i>
+      <h2 className={classes.hQuestes}><span>
+      Win prizes and gain global exposure with Quests
+      </span></h2>
+        <p className={classes.pQuestes}>
           <span>
-            Discover fresh inspiration daily. Your photos could even be featured
-            in our handpicked Editors’ Choice Gallery.
+          Creative challenges to help photographers test their skills, get recognized for their work, and win exciting prizes.
           </span>
         </p>
         <a
@@ -100,12 +127,14 @@ function EditorChoise(props) {
           size="large"
           color="primary"
           href="login"
-          className={classes.EditorBtn}
+          className={classes.QuestesBtn}
         >
-          View Editors’ Choice
+          View Questess
         </a>
+        </div>
+        <img className={classes.QuestsImg} src={imhs} alt="img" />
       </div>
     </div>
   );
 }
-export default withStyles(styles, { withTheme: true })(EditorChoise);
+export default withStyles(styles, { withTheme: true })(Quests);

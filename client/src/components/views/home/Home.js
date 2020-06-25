@@ -4,6 +4,7 @@ import HeadSection from "./HeadSection";
 import InfoCard from "./InfoCard";
 import GetApp from "./GetApp"
 import EditorChoice from "./EditorChoice";
+import Quests from "./Quests";
 function Home(props) {
 
   return (
@@ -12,6 +13,7 @@ function Home(props) {
       <InfoCard />
       <GetApp />
       <EditorChoice/>
+      <Quests/>
     </Fragment>
   );
 }
