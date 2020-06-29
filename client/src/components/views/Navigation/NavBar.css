@@ -67,3 +67,9 @@ color:black!important
     width: 216px;
 
 }
+.myNavContainer{
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100vw;
+}

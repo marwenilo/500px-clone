@@ -4,7 +4,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import InputBase from '@material-ui/core/InputBase';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
-import { Typography } from '@material-ui/core';
+import classNames from "classnames";
 import { Link } from "react-router-dom";
 import {navData} from "./navData"
 import DrpDown from "./components/DrpDown"
@@ -13,6 +13,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
+
   menuButton: {
     marginRight: theme.spacing(2),
   },
@@ -71,7 +72,8 @@ export default function SearchAppBar() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+ 
+    <div className={classNames("myNavContainer", classes.root)}>
       <AppBar position="static">
         <Toolbar className="nav-container">
         <div className="nav-left">
@@ -89,7 +91,7 @@ export default function SearchAppBar() {
           ></path>
         </svg>
         
-    {
+        {
         navData && navData.map((it,key)=>(
             <DrpDown key={key} item={it}/>
 
