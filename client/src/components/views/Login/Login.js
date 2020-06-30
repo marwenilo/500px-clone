@@ -4,23 +4,10 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -49,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     lineHeight: "56px",
     fontWeight: "bold",
     fontSize: "26px",
-    backgroundColor: "#2986F7",
+    backgroundColor: "rgb(8, 112, 209)",
     color: "white",
     padding: "0px 24px",
     borderRadius: "28px",
@@ -59,7 +46,10 @@ const useStyles = makeStyles((theme) => ({
     borderImage: "initial",
     transition: "background-color 0.1s ease 0s",
     textDecoration: "none",
-    marginBottom:"40px"
+    marginBottom:"40px",
+    "&:hover": {
+      backgroundColor: 'rgb(41, 134, 247)'
+    }
   },
   loginContainer: {
     backgroundColor: "#F7F8FA",
@@ -68,17 +58,18 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     padding: "84px",
     height: "100vh",
+
   },
   facebtn: {
-    display: "inline-flex",
-    justifyContent: "center",
+      display: "flex ",
+    justifyContent: "space-around",
     alignItems: "center",
     height: "48px",
     minWidth: "216px",
     lineHeight: "56px",
     fontWeight: "bold",
     fontSize: "26px",
-    backgroundColor: "#29487D",
+    backgroundColor: "rgb(60, 90, 150)",
     color: "white",
     padding: "0px 24px",
     borderRadius: "28px",
@@ -88,11 +79,14 @@ const useStyles = makeStyles((theme) => ({
     borderImage: "initial",
     transition: "background-color 0.1s ease 0s",
     textDecoration: "none",
-    marginBottom:"16px"
+    marginBottom:"16px",
+    "&:hover": {
+      backgroundColor: '#29487D'
+    }
   },
   googlebtn: {
-    display: "inline-flex",
-    justifyContent: "center",
+    display: "flex ",
+    justifyContent: "space-around",
     alignItems: "center",
     height: "48px",
     minWidth: "216px",
@@ -109,11 +103,14 @@ const useStyles = makeStyles((theme) => ({
     borderImage: "initial",
     transition: "background-color 0.1s ease 0s",
     textDecoration: "none",
-    marginBottom:"40px"
+    marginBottom:"40px",
+    "&:hover": {
+      backgroundColor: '#F7F8FA'
+    }
   },
 }));
 
-export default function SignIn() {
+ function SignIn() {
   const classes = useStyles();
 
   return (
@@ -154,37 +151,42 @@ export default function SignIn() {
               variant="contained"
               color="primary"
               className={classes.submit}
+            
             >
               Log In
             </Button>
             <Button
               fullWidth
               variant="contained"
-              color="black"
               className={classes.facebtn}
-              // startIcon={<DeleteIcon />}
+              startIcon={<i class="fab fa-facebook"></i>}
             >
+          
               Log in with Facebook
             </Button>
             <Button
               fullWidth
               variant="contained"
-             
               className={classes.googlebtn}
-              // startIcon={<DeleteIcon />}
+              startIcon={<i class="fab fa-google"></i>}
             >
+            
               Log in with Google
             </Button>
             <Grid container>
               <Grid item xs>
+              <p>
                 <Link href="#" variant="body2">
                   Forgot password?
                 </Link>
+                </p>
               </Grid>
               <Grid item>
+              <p><span>Don't have an account?</span>
                 <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                  {" Sign Up"}
                 </Link>
+                </p>
               </Grid>
             </Grid>
           </form>
@@ -194,3 +196,5 @@ export default function SignIn() {
     </div>
   );
 }
+
+export default SignIn
