@@ -1,14 +1,11 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { connect } from "react-redux";
-import { register } from "../../../Js/actions/authAction";
 import { Redirect } from "react-router-dom";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -166,43 +163,7 @@ return <RegWithEmail/>
           </p>
 
           <form className={classes.form} noValidate>
-            {/* <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Email Address or Username"
-              name="email"
-              value={email}
-              onChange={(e)=>onChange(e)}
-              autoComplete="email"
-              autoFocus
-            /> */}
-            {/* <TextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="password"
-              label="Password"
-              type="password"
-              value={password}
-              onChange={(e)=>onChange(e)}
-              id="password"
-              autoComplete="current-password"
-            /> */}
-
-            {/* <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-            
-            >
-              Log In
-            </Button> */}
+  
             <Button
               fullWidth
               variant="contained"
@@ -263,4 +224,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { register })(SignUp);
+export default SignUp;

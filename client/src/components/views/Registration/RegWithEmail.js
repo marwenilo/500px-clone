@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import {connect} from "react-redux"
-import {login} from "../../../Js/actions/authAction"
+import { register } from "../../../Js/actions/authAction";
 import { Redirect } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
@@ -62,79 +62,31 @@ const useStyles = makeStyles((theme) => ({
     height: "100vh",
 
   },
-  facebtn: {
-      display: "flex ",
-    justifyContent: "space-around",
-    alignItems: "center",
-    height: "48px",
-    minWidth: "216px",
-    lineHeight: "56px",
-    fontWeight: "bold",
-    fontSize: "26px",
-    backgroundColor: "rgb(60, 90, 150)",
-    color: "white",
-    padding: "0px 24px",
-    borderRadius: "28px",
-    borderWidth: "1px",
-    borderStyle: "solid",
-    borderColor: "#29487D",
-    borderImage: "initial",
-    transition: "background-color 0.1s ease 0s",
-    textDecoration: "none",
-    marginBottom:"16px",
-    "&:hover": {
-      backgroundColor: '#29487D'
-    }
-  },
-  googlebtn: {
-    display: "flex ",
-    justifyContent: "space-around",
-    alignItems: "center",
-    height: "48px",
-    minWidth: "216px",
-    lineHeight: "56px",
-    fontWeight: "bold",
-    fontSize: "26px",
-    backgroundColor: "white",
-    color: "#6D7378",
-    padding: "0px 24px",
-    borderRadius: "28px",
-    borderWidth: "1px",
-    borderStyle: "solid",
-    borderColor: "#D7D8DB",
-    borderImage: "initial",
-    transition: "background-color 0.1s ease 0s",
-    textDecoration: "none",
-    marginBottom:"40px",
-    "&:hover": {
-      backgroundColor: '#F7F8FA'
-    }
-  },
+
+
 }));
 
- function RegWithEmail({isAth,login}) {
+ function RegWithEmail({register}) {
   const classes = useStyles();
-  const [loginData, setLoginData] = useState({
-    firstName:"",
+  const [registerData, setRegisterData] = useState({
+    name:"",
       lastName:"",
     email:"",
     password:""
   })
-  const {firstName, lastName,  email, password } = loginData;
-  const onChange =(e)=>{
-    setLoginData({...loginData,[e.target.name]:e.target.value})
-  }
+  const {name, lastName,  email, password } = registerData;
+  const onChange = (e) => {
+    setRegisterData({ ...registerData, [e.target.name]: e.target.value });
+  };
   const onSubmit = async(e)=>{
     e.preventDefault();
-    login({firstName,lastName,email,password})
-    console.log(isAth)
+    console.log(name)
+    register({name,lastName,email,password})
+
   }
 
 
 
-if (isAth){
-  return <Redirect to="/"/>
-}
   return (
     <div className={classes.loginContainer}>
       <Container component="main" maxWidth="xs" onSubmit={(e) => onSubmit(e)}>
@@ -149,12 +101,12 @@ if (isAth){
               margin="normal"
               required
               fullWidth
-              id="firstName"
-              label="User firstName"
-              name="firstName"
-              value={firstName}
+              id="name"
+              label="User name"
+              name="name"
+              value={name}
               onChange={(e)=>onChange(e)}
-            
+              autoComplete="name"
               autoFocus
             />
                <TextField
@@ -164,7 +116,7 @@ if (isAth){
               fullWidth
               id="lastName"
               label="User lastName"
-              name="email"
+              name="lastName"
               value={lastName}
               onChange={(e)=>onChange(e)}
               autoComplete="email"
@@ -210,11 +162,12 @@ if (isAth){
            
        
             <Grid container>
-              <Grid item>
-              <p><span>Don't have an account?</span>
-                <Link href="#" variant="body2">
-                  {" Sign Up"}
-                </Link>
+            <Grid item>
+                <p>
+                  <span>Already have an account?</span>
+                  <Link href="#" variant="body2">
+                    {" Log in"}
+                  </Link>
                 </p>
               </Grid>
             </Grid>
@@ -231,4 +184,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps,{login})(RegWithEmail)
+export default connect(mapStateToProps, { register })(RegWithEmail)

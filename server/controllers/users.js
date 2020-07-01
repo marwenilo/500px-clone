@@ -24,6 +24,7 @@ const getUser = async (req, res) => {
 
 const register = async (req, res) => {
   const { name, lastname, email, password } = req.body;
+  console.log(req.body)
   try {
     // Save to MySQL database
     user = new User({
