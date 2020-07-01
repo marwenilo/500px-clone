@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { connect } from "react-redux";
+
 import { Redirect } from "react-router-dom";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
@@ -116,30 +119,21 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SignUp({ isAth, register }) {
+function SignUp({ isAth  }) {
   const classes = useStyles();
-  const [registerData, setRegisterData] = useState({
-    email: "",
-    password: "",
-  });
+
   const [checked, setChecked] = useState(false);
   const [regEmail, setRegEmail] = useState(false);
 
-  const { email, password } = registerData;
+ 
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
   const handleReg=()=>{
       setRegEmail(true)
   }
-  const onChange = (e) => {
-    setRegisterData({ ...registerData, [e.target.name]: e.target.value });
-  };
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    register({ email, password });
-    console.log(isAth);
-  };
+ 
+
 
   if (isAth) {
     return <Redirect to="/" />;
@@ -149,7 +143,7 @@ return <RegWithEmail/>
   }
   return (
     <div className={classes.loginContainer}>
-      <Container component="main" maxWidth="xs" onSubmit={(e) => onSubmit(e)}>
+      <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
           <Typography component="h1" variant="h5">
@@ -163,7 +157,7 @@ return <RegWithEmail/>
           </p>
 
           <form className={classes.form} noValidate>
-  
+      
             <Button
               fullWidth
               variant="contained"
@@ -224,4 +218,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default SignUp;
+export default connect(mapStateToProps)(SignUp);

@@ -74,6 +74,7 @@ const useStyles = makeStyles((theme) => ({
     email:"",
     password:""
   })
+  const [isReg,setIsReg] = useState(false)
   const {name, lastName,  email, password } = registerData;
   const onChange = (e) => {
     setRegisterData({ ...registerData, [e.target.name]: e.target.value });
@@ -82,9 +83,14 @@ const useStyles = makeStyles((theme) => ({
     e.preventDefault();
     console.log(name)
     register({name,lastName,email,password})
-
+    handleIsReg()
   }
-
+  const handleIsReg=()=>{
+    setIsReg(true)
+}
+  if (isReg) {
+    return <Redirect to="/login" />;
+  }
 
 
   return (
@@ -155,7 +161,7 @@ const useStyles = makeStyles((theme) => ({
               variant="contained"
               color="primary"
               className={classes.submit}
-            
+              
             >
               Log In
             </Button>
