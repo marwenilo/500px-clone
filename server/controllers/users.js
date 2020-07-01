@@ -23,11 +23,12 @@ const getUser = async (req, res) => {
 };
 
 const register = async (req, res) => {
-  const { name, email, password } = req.body;
+  const { name, lastname, email, password } = req.body;
   try {
     // Save to MySQL database
     user = new User({
       name,
+      lastname,
       email,
       password,
     });
@@ -46,7 +47,7 @@ const register = async (req, res) => {
 
 const login = async (req, res) => {
   const { email, password } = req.body;
-console.log(req.body,"back")
+  console.log(req.body, "back");
   try {
     // if the user exists****
 
@@ -93,9 +94,9 @@ const logout = async (req, res) => {
   try {
     const user = await User.findOneAndUpdate(
       { _id: req.user._id },
-      { token: ""}
+      { token: "" }
     );
-console.log(user)
+    console.log(user);
     return res.status(200).send({
       success: true,
     });
