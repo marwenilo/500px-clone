@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState} from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -7,7 +7,9 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-
+import {connect} from "react-redux"
+import {login} from "../../../Js/actions/authAction"
+import { Redirect } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -110,12 +112,30 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
- function SignIn() {
+ function SignIn({isAth,login}) {
   const classes = useStyles();
+  const [loginData, setLoginData] = useState({
+    email:"",
+    password:""
+  })
+  const { email, password } = loginData;
+  const onChange =(e)=>{
+    setLoginData({...loginData,[e.target.name]:e.target.value})
+  }
+  const onSubmit = async(e)=>{
+    e.preventDefault();
+    login({email,password})
+    console.log(isAth)
+  }
 
+
+
+if (isAth){
+  return <Redirect to="/"/>
+}
   return (
     <div className={classes.loginContainer}>
-      <Container component="main" maxWidth="xs">
+      <Container component="main" maxWidth="xs" onSubmit={(e) => onSubmit(e)}>
         <CssBaseline />
         <div className={classes.paper}>
           <Typography component="h1" variant="h5">
@@ -130,6 +150,8 @@ const useStyles = makeStyles((theme) => ({
               id="email"
               label="Email Address or Username"
               name="email"
+              value={email}
+              onChange={(e)=>onChange(e)}
               autoComplete="email"
               autoFocus
             />
@@ -141,6 +163,8 @@ const useStyles = makeStyles((theme) => ({
               name="password"
               label="Password"
               type="password"
+              value={password}
+              onChange={(e)=>onChange(e)}
               id="password"
               autoComplete="current-password"
             />
@@ -196,5 +220,10 @@ const useStyles = makeStyles((theme) => ({
     </div>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    isAth: state.authReducer.isAth
+  }
+}
 
-export default SignIn
+export default connect(mapStateToProps,{login})(SignIn)
