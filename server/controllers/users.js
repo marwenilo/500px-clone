@@ -19,12 +19,12 @@ const getUser = async (req, res) => {
     role: user.role,
     image: user.image,
   });
-  console.log(user);
+  console.log(user,"user back");
 };
 
 const register = async (req, res) => {
   const { name, lastname, email, password } = req.body;
-  console.log(req.body)
+  console.log(req.body);
   try {
     // Save to MySQL database
     user = new User({

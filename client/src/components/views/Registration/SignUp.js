@@ -12,7 +12,7 @@ import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import RegWithEmail from "./RegWithEmail"
+import RegWithEmail from "./RegWithEmail";
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -119,27 +119,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function SignUp({ isAth  }) {
+function SignUp({ isAth }) {
   const classes = useStyles();
 
   const [checked, setChecked] = useState(false);
   const [regEmail, setRegEmail] = useState(false);
 
- 
   const handleChange = (event) => {
     setChecked(event.target.checked);
   };
-  const handleReg=()=>{
-      setRegEmail(true)
-  }
- 
-
+  const handleReg = () => {
+    setRegEmail(true);
+  };
 
   if (isAth) {
     return <Redirect to="/" />;
   }
-  if(regEmail){
-return <RegWithEmail/>
+  if (regEmail) {
+    return <RegWithEmail />;
   }
   return (
     <div className={classes.loginContainer}>
@@ -157,7 +154,6 @@ return <RegWithEmail/>
           </p>
 
           <form className={classes.form} noValidate>
-      
             <Button
               fullWidth
               variant="contained"

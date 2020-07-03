@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import {connect} from "react-redux"
+import { connect } from "react-redux";
 import { register } from "../../../Js/actions/authAction";
 import { Redirect } from "react-router-dom";
 
@@ -48,10 +48,10 @@ const useStyles = makeStyles((theme) => ({
     borderImage: "initial",
     transition: "background-color 0.1s ease 0s",
     textDecoration: "none",
-    marginBottom:"40px",
+    marginBottom: "40px",
     "&:hover": {
-      backgroundColor: 'rgb(41, 134, 247)'
-    }
+      backgroundColor: "rgb(41, 134, 247)",
+    },
   },
   loginContainer: {
     backgroundColor: "#F7F8FA",
@@ -60,38 +60,34 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     padding: "84px",
     height: "100vh",
-
   },
-
-
 }));
 
- function RegWithEmail({register}) {
+function RegWithEmail({ register }) {
   const classes = useStyles();
   const [registerData, setRegisterData] = useState({
-    name:"",
-      lastName:"",
-    email:"",
-    password:""
-  })
-  const [isReg,setIsReg] = useState(false)
-  const {name, lastName,  email, password } = registerData;
+    name: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+  const [isReg, setIsReg] = useState(false);
+  const { name, lastName, email, password } = registerData;
   const onChange = (e) => {
     setRegisterData({ ...registerData, [e.target.name]: e.target.value });
   };
-  const onSubmit = async(e)=>{
+  const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(name)
-    register({name,lastName,email,password})
-    handleIsReg()
-  }
-  const handleIsReg=()=>{
-    setIsReg(true)
-}
+    console.log(name);
+    register({ name, lastName, email, password });
+    handleIsReg();
+  };
+  const handleIsReg = () => {
+    setIsReg(true);
+  };
   if (isReg) {
     return <Redirect to="/login" />;
   }
-
 
   return (
     <div className={classes.loginContainer}>
@@ -99,10 +95,10 @@ const useStyles = makeStyles((theme) => ({
         <CssBaseline />
         <div className={classes.paper}>
           <Typography component="h1" variant="h5">
-          Sign up with Facebook or Google
+            Sign up with Facebook or Google
           </Typography>
           <form className={classes.form} noValidate>
-          <TextField
+            <TextField
               variant="outlined"
               margin="normal"
               required
@@ -111,11 +107,11 @@ const useStyles = makeStyles((theme) => ({
               label="User name"
               name="name"
               value={name}
-              onChange={(e)=>onChange(e)}
+              onChange={(e) => onChange(e)}
               autoComplete="name"
               autoFocus
             />
-               <TextField
+            <TextField
               variant="outlined"
               margin="normal"
               required
@@ -124,7 +120,7 @@ const useStyles = makeStyles((theme) => ({
               label="User lastName"
               name="lastName"
               value={lastName}
-              onChange={(e)=>onChange(e)}
+              onChange={(e) => onChange(e)}
               autoComplete="email"
               autoFocus
             />
@@ -137,7 +133,7 @@ const useStyles = makeStyles((theme) => ({
               label="Email Address or Username"
               name="email"
               value={email}
-              onChange={(e)=>onChange(e)}
+              onChange={(e) => onChange(e)}
               autoComplete="email"
               autoFocus
             />
@@ -150,7 +146,7 @@ const useStyles = makeStyles((theme) => ({
               label="Password"
               type="password"
               value={password}
-              onChange={(e)=>onChange(e)}
+              onChange={(e) => onChange(e)}
               id="password"
               autoComplete="current-password"
             />
@@ -161,14 +157,12 @@ const useStyles = makeStyles((theme) => ({
               variant="contained"
               color="primary"
               className={classes.submit}
-              
             >
               Log In
             </Button>
-           
-       
+
             <Grid container>
-            <Grid item>
+              <Grid item>
                 <p>
                   <span>Already have an account?</span>
                   <Link href="#" variant="body2">
@@ -179,15 +173,14 @@ const useStyles = makeStyles((theme) => ({
             </Grid>
           </form>
         </div>
-        
       </Container>
     </div>
   );
 }
 const mapStateToProps = (state) => {
   return {
-    isAth: state.authReducer.isAth
-  }
-}
+    isAth: state.authReducer.isAth,
+  };
+};
 
-export default connect(mapStateToProps, { register })(RegWithEmail)
+export default connect(mapStateToProps, { register })(RegWithEmail);

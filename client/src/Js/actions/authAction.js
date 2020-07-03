@@ -8,35 +8,38 @@ import {
   LOGOUT,
 } from "../constant/actionsTypes";
 import axios from "axios";
-import setAuthToken from "../../hoc/setAuthToken"
+import setAuthToken from "../../hoc/setAuthToken";
 
-export const loadUser=()=>async (dispatch)=>{
-    if(localStorage.token){
-        setAuthToken(localStorage.token);
-    }
-    try {
-        const res = await axios.get("/api/users/login");
-        dispatch({
-            type: USER_LOADED,
-            payload:res.data
-        })
-    } catch (error) {
-        console.log(error,"load user")
-    }
-}
+export const loadUser = () => async (dispatch) => {
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
+  }
+  try {
+    const res = await axios.get("/api/users/login");
+    console.log(res.data,"getuser redux")
+    dispatch({
+      type: USER_LOADED,
+      payload: res.data,
+    });
+  } catch (error) {
+    console.log(error, "load user");
+  }
+};
 
-export const register = ({ name, lastName, email, password }) => async (dispatch) => {
+export const register = ({ name, lastName, email, password }) => async (
+  dispatch
+) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
     },
   };
   const body = JSON.stringify({ name, lastName, email, password });
-  console.log(body,"redux")
+  console.log(body, "redux");
   try {
-     await axios.post("/api/users/register", body, config);
+    await axios.post("/api/users/register", body, config);
     dispatch({
-      type: REGISTER_SUCCESS
+      type: REGISTER_SUCCESS,
     });
   } catch (error) {
     console.log(error, "reg");
@@ -49,17 +52,17 @@ export const login = ({ email, password }) => async (dispatch) => {
       "Content-Type": "application/json",
     },
   };
-  console.log(email)
+  console.log(email);
   const body = JSON.stringify({ email, password });
- console.log(body,"d")
+  console.log(body, "d");
   try {
     const res = await axios.post("/api/users/login", body, config);
-    console.log(res)
+    console.log(res);
     dispatch({
       type: LOGIN_SUCCESS,
       payload: res.data,
     });
-    dispatch(loadUser())
+    dispatch(loadUser());
   } catch (error) {
     console.log(error, "login");
   }
