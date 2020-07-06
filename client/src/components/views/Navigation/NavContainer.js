@@ -110,8 +110,9 @@ function SearchAppBar({ isAth }) {
           
             {isAth ? (
               <div className="auth-parte">
-                <img src="#" alt="profile img" />
-                <i class="far fa-bell"></i>
+                {/* <img src="#" alt="profile img" /> */}
+                <i class="fas fa-inbox fa-2x"></i>
+                <i class="far fa-bell fa-2x"></i>
                 <button to="/register" className="register-style">
                   <span>Upload</span>
                 </button>
